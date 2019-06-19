@@ -1,8 +1,9 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.http import HttpResponse
+from django.views.generic import TemplateView
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the students index.")
+class AboutView(TemplateView):
+    template_name = "students/about.html"
+
+
+class IndexView(TemplateView):
+    template_name = "students/index.html"
