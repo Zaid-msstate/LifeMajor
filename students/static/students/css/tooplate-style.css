@@ -74,6 +74,7 @@ p:last-child {
   border-bottom: 1px solid #909090;
   background-color: white;
   z-index: 3000;
+  margin-top: 20px;
 }
 
 .tm-nav-section.sticky {
