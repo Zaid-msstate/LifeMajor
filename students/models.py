@@ -23,12 +23,21 @@ class Department(models.Model):
         return str(self.name)
 
 
-class Major(models.Model):
+class MajorCategory(models.Model):
     name = models.CharField(max_length=30)
-    host = models.ForeignKey(Department, on_delete=models.CASCADE)
+    child = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE, related_name="child_parent")
+    parent = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE, related_name="parent_child")
 
     def __str__(self):
         return str(self.name)
+
+
+class Major(models.Model):
+    category = models.ForeignKey(MajorCategory, on_delete=models.CASCADE)
+    host = models.ForeignKey(Department, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.category.name)
 
 
 class Student(models.Model):
@@ -38,12 +47,3 @@ class Student(models.Model):
 
     def __str__(self):
         return str(self.first_name) + " " + str(self.last_name)
-
-
-class MajorCategory(models.Model):
-    name = models.CharField(max_length=30)
-    child = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE, related_name="child_parent")
-    parent = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE, related_name="parent_child")
-
-    def __str__(self):
-        return str(self.name)
