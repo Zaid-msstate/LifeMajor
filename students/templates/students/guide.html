@@ -20,7 +20,7 @@
     <div class="home" id="home">
       <div class="col-12 text-center">
         <div class="tm-page-header">
-          <img src=" PUT_LOGO_Here.jpg" alt="PUT_LOGO_Here">
+			<img src={% static "students/img/logo.png" %} alt="PUT_LOGO_Here">
           <h1>LifeMajor</h1>
         </div>
       </div>
@@ -83,6 +83,33 @@
               <h2 class="">Guide</h2>
             </header>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+			<ul>
+			{% for top_category in top_categories %}
+			<li>
+				<a data-toggle="collapse" href="#top-level-{{ top_category.pk }}">[Toggle]</a>
+				{{ top_category }}
+				<ul class="collapse" id="top-level-{{ top_category.pk }}">
+				{% for sub_category in top_category.parent_child.all %}
+					<li>{{ sub_category}}</li>
+					<ul>
+						{% for sub_sub_category in sub_category.parent_child.all %}
+							<li>{{ sub_sub_category }}</li>
+							<ul>
+								{% for sub_sub_sub_category in sub_sub_category.parent_child.all %}
+								<li>{{ sub_sub_sub_category}}</li>
+								{% endfor %}
+							</ul>
+						{% endfor %}
+					</ul>
+				{% endfor %}
+				</ul>
+			</li>
+			{% endfor %}
+			</ul>
         </div>
       </div>
       <div class="row">
