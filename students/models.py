@@ -27,6 +27,9 @@ class MajorCategory(models.Model):
     name = models.CharField(max_length=30)
     parent = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE, related_name="parent_child")
 
+    class Meta:
+        verbose_name_plural = "major categories"
+
     def __str__(self):
         return str(self.name)
 
