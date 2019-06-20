@@ -8,5 +8,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('about/', views.AboutView.as_view(), name='about'),
+    path('guide/', views.GuideView.as_view(), name='guide'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

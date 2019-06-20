@@ -7,3 +7,7 @@ class AboutView(TemplateView):
 
 class IndexView(TemplateView):
     template_name = "students/index.html"
+
+
+class GuideView(TemplateView):
+    template_name = "students/guide.html"
