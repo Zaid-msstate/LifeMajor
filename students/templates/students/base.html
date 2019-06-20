@@ -1,0 +1,30 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<head>
+    <title>
+        LifeMajor | {% block title %}Title{% endblock %}
+    </title>
+    <style>
+        div#nav ul li {
+            display: inline;   
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    {% block nav %}
+    <div id="nav">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/plan">Plan</a></li>
+        <li><a href="/explore">Explore</a></li>
+        <li><a href="/about">About</a></li>
+    </ul>
+    </nav>
+    {% endblock %}
+
+    {% block content %}Content{% endblock %}
+</body>
