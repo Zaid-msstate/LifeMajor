@@ -25,7 +25,6 @@ class Department(models.Model):
 
 class MajorCategory(models.Model):
     name = models.CharField(max_length=30)
-    child = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE, related_name="child_parent")
     parent = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE, related_name="parent_child")
 
     def __str__(self):
